@@ -1,12 +1,6 @@
 # CHATTY
 
-> Connect Instantly, Communicate Limitlessly, Empower Every Conversation
-
-![last commit](https://img.shields.io/github/last-commit/yourusername/chatty)
-![language](https://img.shields.io/github/languages/top/yourusername/chatty)
-![repo size](https://img.shields.io/github/repo-size/yourusername/chatty)
-![issues](https://img.shields.io/github/issues/yourusername/chatty)
-![stars](https://img.shields.io/github/stars/yourusername/chatty)
+Connect Instantly, Communicate Limitlessly, Empower Every Conversation
 
 Built with the tools and technologies:  
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
@@ -16,6 +10,7 @@ Built with the tools and technologies:
 ![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)  
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens)
+![DaisyUI](https://img.shields.io/badge/DaisyUI-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white)
 
 ---
 
