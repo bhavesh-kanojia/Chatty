@@ -19,6 +19,10 @@ const messageSchema = new Schema(
     image: {
       type: String,
     },
+    isBot: {
+      type: Boolean,
+      default: false,
+    }
   },
   {
     timestamps: true,

@@ -3,6 +3,8 @@ import { api } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import {useAuthStore} from "./useAuthStore.js";
 
+const BOT_ID = "68aec056da9c623f09622ab7";
+
 export const useChatStore = create((set,get) => ({
     messages : [],
     users : [],
@@ -39,9 +41,13 @@ export const useChatStore = create((set,get) => ({
         try {
             const res = await api.post(`/messages/send/${selectedUser._id}`,messageData);
             console.log(res.data);
-            set({
-                messages : [...messages,res.data]
-            });
+            set((state) => ({
+                messages: [...state.messages, res.data],
+            }));
+            if(selectedUser._id === BOT_ID){
+                const botRes = await api.post('/messages/send/chatbot', messageData);
+                console.log(res.data);
+            }
         } catch (error) {
             toast.error(error.response.data.message);
         }

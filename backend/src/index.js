@@ -34,6 +34,9 @@ if(process.env.NODE_ENV === "production"){
 
 app.use((err, req, res, next) => {
   let { status = 500, message = "Internal Server Error" } = err;
+  if (res.headersSent) {
+    return next(err);
+  }
   res.status(status).json({ message });
 });
 

@@ -47,6 +47,47 @@ export const sendMessage = async (req, res) => {
   if(receiverSocketId){
     io.to(receiverSocketId).emit("newMessage",newMessage);
   }
-
   res.status(201).json(newMessage);
-};
+}
+
+async function query(data) {
+  const response = await fetch("https://router.huggingface.co/v1/chat/completions", {
+		headers: {
+			Authorization: `Bearer ${process.env.HF_TOKEN}`,
+			"Content-Type": "application/json",
+		},
+		method: "POST",
+		body: JSON.stringify(data),
+	});
+	const result = await response.json();
+	return result.choices[0].message.content;
+}
+
+export const botReply = async (req,res) => {
+  const { text, image } = req.body;
+  const senderId = req.user._id;
+
+  const result = await query({ 
+    messages: [
+        {
+            role: "user",
+            content: text,
+        },
+    ],
+    model: "meta-llama/Llama-3.1-8B-Instruct:cerebras",
+  });
+  const botMessage = new Message({
+      senderId: process.env.BOT_USER_ID,
+      receiverId: senderId,
+      text: result,
+      isBot: true,
+  });
+  await botMessage.save();
+  // socket.io
+  const receiverSocketId = getReceiverSocketId(senderId);
+  if(receiverSocketId){
+    io.to(receiverSocketId).emit("newMessage",botMessage);
+  }
+  res.status(201).json(botMessage);
+  
+}
