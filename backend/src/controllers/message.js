@@ -64,7 +64,7 @@ async function query(data) {
 }
 
 export const botReply = async (req,res) => {
-  const { text, image } = req.body;
+  const { text } = req.body;
   const senderId = req.user._id;
 
   const result = await query({ 
