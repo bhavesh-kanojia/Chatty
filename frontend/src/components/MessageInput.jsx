@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { useChatStore } from "../store/useChatStore";
+import { useChatStore, BOT_ID } from "../store/useChatStore";
 import { Image, Send, X } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -7,7 +7,7 @@ const MessageInput = () => {
   const [text, setText] = useState("");
   const [imagePreview, setImagePreview] = useState(null);
   const fileInputRef = useRef(null);
-  const { sendMessage } = useChatStore();
+  const { sendMessage, selectedUser } = useChatStore();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -89,7 +89,7 @@ const MessageInput = () => {
             onChange={handleImageChange}
           />
 
-          <button
+          {selectedUser._id == BOT_ID ? null : <button
             type="button"
             className={`flex btn btn-circle
                          ${
@@ -98,7 +98,7 @@ const MessageInput = () => {
             onClick={() => fileInputRef.current?.click()}
           >
             <Image size={20}/>
-          </button>
+          </button>}
         </div>
         <button
           type="submit"

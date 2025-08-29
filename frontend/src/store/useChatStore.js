@@ -3,7 +3,7 @@ import { api } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import {useAuthStore} from "./useAuthStore.js";
 
-const BOT_ID = "68aec056da9c623f09622ab7";
+export const BOT_ID = "68aec056da9c623f09622ab7";
 
 export const useChatStore = create((set,get) => ({
     messages : [],
