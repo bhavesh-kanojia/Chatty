@@ -74,7 +74,7 @@ export const botReply = async (req,res) => {
             content: text,
         },
     ],
-    model: "meta-llama/Llama-3.1-8B-Instruct:cerebras",
+    model: "meta-llama/Llama-3.1-8B-Instruct:novita",
   });
   const botMessage = new Message({
       senderId: process.env.BOT_USER_ID,
